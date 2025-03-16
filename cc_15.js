@@ -41,3 +41,31 @@ riskForm.addEventListener('submit', (e) => {
     departmentInput.value = '';
 });
 
+// Task 3 - Removing Risk Items
+function addRiskItem(riskName, riskLevel, department) {
+    const riskCard = document.createElement('div');
+    riskCard.classList.add('riskCard');
+
+    const riskNameElement = document.createElement('h3');
+    riskNameElement.textContent = riskName;
+
+    const riskLevelElement = document.createElement('p');
+    riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
+
+    const departmentElement = document.createElement('p');
+    departmentElement.textContent = `Department: ${department}`;
+
+    const resolveButton = document.createElement('button');
+    resolveButton.textContent = 'Resolve';
+    resolveButton.addEventListener('click', () => {
+        riskDashboard.removeChild(riskCard);
+    });
+
+    riskCard.appendChild(riskNameElement);
+    riskCard.appendChild(riskLevelElement);
+    riskCard.appendChild(departmentElement);
+    riskCard.appendChild(resolveButton);
+
+    riskDashboard.appendChild(riskCard);
+}
+
