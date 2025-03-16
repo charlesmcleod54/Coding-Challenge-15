@@ -105,3 +105,26 @@ function addRiskItem(riskName, riskLevel, department) {
     riskDashboard.appendChild(riskCard);
 }
 
+// Task 5 - Implementing Bulk Updates
+const increaseRiskButton = document.createElement('button');
+increaseRiskButton.textContent = 'Increase Risk Levels';
+riskDashboard.appendChild(increaseRiskButton);
+
+increaseRiskButton.addEventListener('click', () => {
+    const riskCards = document.querySelectorAll('.riskCard');
+
+    riskCards.forEach(card => {
+        const riskLevelElement = card.querySelector('p');
+        const currentLevel = riskLevelElement.textContent.split(': ')[1];
+
+        if (currentLevel === 'Low') {
+            riskLevelElement.textContent = 'Risk Level: Medium';
+            card.style.backgroundColor = 'yellow';
+        } else if (currentLevel === 'Medium') {
+            riskLevelElement.textContent = 'Risk Level: High';
+            card.style.backgroundColor = 'red';
+        }
+
+    });
+});
+
