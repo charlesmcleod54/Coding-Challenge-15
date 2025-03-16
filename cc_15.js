@@ -128,3 +128,33 @@ increaseRiskButton.addEventListener('click', () => {
     });
 });
 
+// Task 6 - Handling Event Propagation
+function addRiskItem(riskName, riskLevel, department) {
+    const riskCard = document.createElement('div');
+    riskCard.classList.add('riskCard');
+
+    const resolveButton = document.createElement('button');
+    resolveButton.textContent = 'Resolve';
+    resolveButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        riskDashboard.removeChild(riskCard);
+    });
+
+    const riskNameElement = document.createElement('h3');
+    riskNameElement.textContent = riskName;
+    const riskLevelElement = document.createElement('p');
+    riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
+    const departmentElement = document.createElement('p');
+    departmentElement.textContent = `Department: ${department}`;
+
+    riskCard.appendChild(riskNameElement);
+    riskCard.appendChild(riskLevelElement);
+    riskCard.appendChild(departmentElement);
+    riskCard.appendChild(resolveButton);
+
+    riskCard.addEventListener('click', () => {
+        alert("Risk card clicked");
+    });
+
+    riskDashboard.appendChild(riskCard);
+}
